@@ -40,7 +40,21 @@ def get_index_sources(index_name: str) -> list[dict]:
     return [d['_source'] for d in resp.body['hits']['hits']]
 
 
-def count_fileds(index_name: str,
-                 from_timestamp: int, to_timestamp: int):
-    return es.count(index=index_name,
-                    body=create_query(from_timestamp, to_timestamp))['count']
+def get_aggregations(index_name: str,
+                     from_timestamp: int, to_timestamp: int):
+    body = {
+        "query": {
+            "range": {
+                "timestamp": {
+                    "gte": from_timestamp,
+                    "lt": to_timestamp
+                }
+            }
+        },
+        "aggs": {
+            "math_values": {"stats": {"field": "value"}}
+        }
+    }
+    result = es.search(index=index_name,
+                       body=body).body
+    return result['aggregations']['math_values']
