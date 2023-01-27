@@ -3,11 +3,11 @@ import urllib3
 
 from elasticsearch import Elasticsearch
 
-from config import ES_NAME, ES_HOST, ES_PASS
+from config import ES_NAME, ES_HOST, ES_PASS, ES_PORT
 
 
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
-es = Elasticsearch(ES_HOST, basic_auth=[ES_NAME, ES_PASS],
+es = Elasticsearch("https://localhost:9200", basic_auth=[ES_NAME, ES_PASS],
                    verify_certs=False, ssl_show_warn=False)
 
 
