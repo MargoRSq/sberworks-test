@@ -7,7 +7,8 @@
   - [📦 Installation](#-installation)
   - [⚡Usage](#usage)
     - [Script](#script)
-    - [Server](#server)
+    - [API Server](#api-server)
+    - [Testing](#testing)
 
 
 ### Requirements:
@@ -24,10 +25,10 @@ You can also install packages from `requirements.txt` file
 
 ### Script
 
-Run `python3 app/script.py` to fill elasticsearch datastorage
+Run `python3 app/script.py` to fill elasticsearch datastorage with data from `test.json` file
 
 
-### Server
+### API Server
 1. Set your elasticsearch server credentials in `.env` file like in `.env.example`
 
 2. Start uvicorn server with API using this command:
@@ -35,3 +36,9 @@ Run `python3 app/script.py` to fill elasticsearch datastorage
    python3 app/main.py
    ```
 This command is starting the development server on `http://localhost:8000`
+
+### Testing
+
+To run test that valid for data from testing file(`test.json`) just run `pytest` or `poetry run pytest` inside your virtual environment.
+
+- `api_test.py` contains 7 tests for api with and withount queries
