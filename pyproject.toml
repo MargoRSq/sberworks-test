@@ -9,6 +9,8 @@ python = "^3.10"
 fastapi = "^0.89.1"
 uvicorn = "^0.20.0"
 elasticsearch = "^8.6.0"
+pytest = "^7.2.1"
+httpx = "^0.23.3"
 
 [tool.poetry.dev-dependencies]
 flake8 = "^6.0.0"
@@ -16,3 +18,11 @@ flake8 = "^6.0.0"
 [build-system]
 requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.pytest.ini_options]
+filterwarnings = [
+    "error",
+    "ignore::urllib3.exceptions.InsecureRequestWarning",
+    # note the use of single quote below to denote "raw" strings in TOML
+    'ignore:function ham\(\) is deprecated:DeprecationWarning',
+]
