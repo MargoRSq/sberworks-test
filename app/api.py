@@ -37,7 +37,7 @@ async def mean(commons: dict = Depends(common_parameters)):
     values_sum = aggrs['sum']
     values_count = aggrs['count']
     if values_count > 0:
-        value = values_sum / values_count
+        value = round((values_sum / values_count), 2)
     else:
         value = 0
     return {"mean": value}
