@@ -41,4 +41,4 @@ This command is starting the development server on `http://localhost:8000`
 
 To run test that valid for data from testing file(`test.json`) just run `pytest` or `poetry run pytest` inside your virtual environment.
 
-- `api_test.py` contains 8 tests for api with and withount queries
+- `api_test.py` contains 8 tests for api with and without queries
